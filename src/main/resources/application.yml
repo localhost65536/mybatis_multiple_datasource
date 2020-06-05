@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+
+my-datasource:
+  masterDataSource:
+    url: jdbc:mysql://localhost:3306/master01?characterEncoding=UTF-8
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+
+  slaveDataSources:
+    - url: jdbc:mysql://localhost:3306/slave01?characterEncoding=UTF-8
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+
+    - url: jdbc:mysql://localhost:3306/slave02?characterEncoding=UTF-8
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+
+#  visitStrategy: random
+  visitStrategy: roundRobin
